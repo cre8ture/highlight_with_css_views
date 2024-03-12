@@ -95,7 +95,7 @@
     padding: 0 0 50vmin 0;
   }
   
-  button {
+  .toggle-dark-mode {
       position: fixed;
       top: 1rem;
       right: 1rem;
@@ -115,7 +115,7 @@
       display: none;
   }
   
-  button svg {
+  .toggle-dark-mode svg {
       width: 65%;
   }
   
@@ -184,6 +184,7 @@
     font-size: 0.875rem;
     scale: var(--highlighted);
     transition: scale 0.2s;
+    cursor: pointer; 
   }
   
   @keyframes highlight {
@@ -199,6 +200,18 @@
       animation: none;
   }
   
+
+  .chat-widget {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-widget input,
+  .chat-widget button {
+    margin-bottom: 0.5rem;
+  }
+
+
   @keyframes grow {
       0% {
           clip-path: polygon(50vmax 50vmax, 50vmax 50vmax, 50vmax 50vmax);
@@ -207,3 +220,5 @@
           clip-path: polygon(50vmax -100vmax, -100vmax 200vmax, 200vmax 200vmax);
       }
   }
+
+  

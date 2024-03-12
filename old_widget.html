@@ -1,0 +1,44 @@
+let chatElements = []; // Declare an array to store chat elements
+
+document.addEventListener("DOMContentLoaded", () => {
+  const marks = document.querySelectorAll("mark");
+
+  marks.forEach((mark, index) => {
+    // Fetch chat.html content
+    fetch("../chat_widget/chat.html")
+      .then((response) => response.text())
+      .then((chatHTML) => {
+        // Create a new element for the chat widget
+        const chatElement = document.createElement("div");
+        chatElement.innerHTML = chatHTML;
+
+        // Position the chat widget to the right of the mark
+        const markRect = mark.getBoundingClientRect();
+        console.log("i am markRect", markRect);
+        chatElement.style.position = "absolute";
+        chatElement.style.left = `${markRect.right + 10}px`; // Add some spacing from the mark
+        chatElement.style.top = `${markRect.top}px`; // Align with the top of the mark
+        chatElement.style.display = "none"; // Set initial display to none
+
+        // Append the chat element to the body
+        document.body.appendChild(chatElement);
+
+        // Add the chat element to the chatElements array
+        chatElements.push(chatElement);
+
+        // Add click event listener to the mark element
+        mark.addEventListener("click", (e) => {
+          const afterWidth = 32; // Width of the ::after pseudo-element
+          const clickX = e.clientX - markRect.left;
+
+          if (clickX > markRect.width - afterWidth) {
+            // Toggle display of the corresponding chat element
+            chatElement.style.display = chatElement.style.display === "block" ? "none" : "block";
+          }
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching external file:", error);
+      });
+  });
+});

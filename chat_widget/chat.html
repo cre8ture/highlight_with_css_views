@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Widget</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    /* body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    } */
+
+    .chat-widget {
+      position: relative;
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .chat-body {
+      overflow-y: auto;
+      max-height: 150px;
+      margin-bottom: 10px;
+    }
+
+    .chat-input {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .chat-input input {
+      flex-grow: 1;
+      max-width: 180;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      border: 1px solid #ccc;
+    }
+
+    .enter-icon {
+      position: absolute;
+      right: 5px;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .slider-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .slider-track {
+      height: 0.5rem;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.25rem;
+      background-color: #e5e7eb;
+    }
+
+    .slider-progress {
+      position: absolute;
+      height: 100%;
+      background-color: #3b82f6;
+    }
+
+    .slider-thumb {
+      position: absolute;
+      height: 1.25rem;
+      width: 1.25rem;
+      border-radius: 50%;
+      border: 2px solid #3b82f6;
+      background-color: white;
+      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.2s ease-in-out;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-widget" id="chat-widget">
+    <div class="chat-body">
+      <!-- Chat messages will be appended here -->
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type a message..." />
+      <i class="enter-icon fas fa-paper-plane"></i>
+    </div>
+    <div class="slider-labels">
+      <span>Low expertise</span>
+      <span>High expertise</span>
+    </div>
+    <div class="slider-container">
+      <div class="slider-track">
+        <div class="slider-progress"></div>
+      </div>
+      <button class="slider-thumb" style="left: 50%;" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal" tabindex="0"></button>
+    </div>
+  </div>
+  <script>
+   
+  </script>
+</body>
+</body>
+</html>
