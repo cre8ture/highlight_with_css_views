@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-const slider = document.querySelector('.relative.flex');
-const thumb = slider.querySelector('button');
-const track = slider.querySelector('.bg-secondary');
+const slider = document.querySelector('.slider-container');
+
+console.log("slider", slider);
+
+const thumb = slider.querySelector('#slider-thumb');
+const track = slider.querySelector('.slider-track"');
 
 let currentPosition = 0;
 
