@@ -13,44 +13,46 @@ document.addEventListener("DOMContentLoaded", () => {
         chatElement.id = `chat-${index}`;
         chatElement.innerHTML = chatHTML;
         chatElement.style.position = "absolute";
-        chatElement.style.display = "none"; // Initially hidden
+        // chatElement.style.display = "none"; // Initially hidden
+        chatElement.classList.add('fade-out')
         document.body.appendChild(chatElement);
         update_sliders(chatElement);
         makeDraggable(chatElement); // Make the chat widget draggable
         chat_send(chatElement)
         update_chats(chatElement, index) 
         chatElements.push(chatElement);
-        
-
         mark.addEventListener("click", (e) => {
           const markRect = mark.getBoundingClientRect();
           const afterWidth = 32; // Width of the ::after pseudo-element
           const clickX = e.clientX - markRect.left;
-
+        
           if (clickX > markRect.width - afterWidth) {
             // Recalculate positions on click
-            chatElement.style.left = `${markRect.right + 20 + window.scrollX}px`; // Add scrollX for horizontal scrolling
-            chatElement.style.top = `${markRect.top + 30 + window.scrollY}px`; // Add scrollY for vertical scrolling
-            // Toggle display
-            chatElement.style.display = chatElement.style.display === "block" ? "none" : "block";
-            // if (chatElement.classList.contains === "fade-out") {
-            //   chatElement.classList.add("fade-in");
-            //   chatElement.classList.remove("fade-out");
+            chatElement.style.left = `${markRect.right + 20 + window.scrollX}px`;
+            chatElement.style.top = `${markRect.top + 30 + window.scrollY}px`;
+        
+            // Toggle fade effect
+            if (chatElement.classList.contains('fade-out')) {
+              chatElement.classList.remove('fade-out');
+              chatElement.classList.add('fade-in');
+              chatElement.style.display = 'block';
 
+            } else if (!chatElement.classList.contains('fade-in')) { // It doesn't already have 'fade-in', so it's either hidden or 'fade-out' was just removed but not updated in console
+              chatElement.classList.add('fade-in');
+              chatElement.style.display = 'block';
 
-            //   chatElement.style.display = "block";
-            // }
-            // else{
-            //   chatElement.style.display = "block";
-
-            //   chatElement.classList.add("fade-out");
-            //   chatElement.classList.remove("fade-in");
-
-            //   // chatElement.style.display = "none";
-            // }
-
+            } else {
+              // It currently has 'fade-in', so we initiate 'fade-out'
+              chatElement.classList.remove('fade-in');
+              chatElement.classList.add('fade-out');
+              // Set a 500ms timeout to hide the element
+              setTimeout(() => {
+                chatElement.style.display = 'none'; // Hide the element after 500ms
+              }, 500);
+                        }
           }
         });
+        
       })
       .catch((error) => {
         console.error("Error fetching external file:", error);

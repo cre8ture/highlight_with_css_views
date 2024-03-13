@@ -30,10 +30,9 @@
   </header>
   <main>
     <section>
-      <h1>Next.js on Vercel</h1>
+      <h1>Sample Highlight Reading AI</h1>
       <span
-        >Vercel is the native Next.js platform, designed to enhance the Next.js
-        experience.</span
+        >This article describes how Next.js works.</span
       >
       <p>
         Next.js is a fullstack React framework for the web, maintained by
@@ -222,11 +221,45 @@
     >
       Disconnected
     </div>
+
+
   </main>
+
+  <section><div id="text-selection-menu">
+    <button id="explain-btn">Explain</button>
+    <button id="quiz-btn">Quiz</button>
+  </div>
+  
+  </section>
+
+
+<section>
+  <div id="quiz" class="container">
+    <div class="quiz-card">
+      <div class="card-content">
+        <h3>Question goes here</h3>
+        <ul class="list-none">
+          <li class="answer-option">
+            <input type="radio" id="answer-1" name="answer" value="answer 1">
+            <label for="answer-1">Answer option 1</label>
+          </li>
+          <li class="answer-option">
+            <input type="radio" id="answer-2" name="answer" value="answer 2">
+            <label for="answer-2">Answer option 2</label>
+          </li>
+        </ul>
+      </div>
+      <button id="next-quiz-btn">Next</button>
+    </div>
+  </div>
+</section>
+
   <script src="js/get_token.js"></script>
   <script src="js/script.js"></script>
   <!-- <script src="js/slider.js"></script> -->
   <script src="js/get_highlighted_text.js"></script>
   <script src="js/initiate_chat.js"></script>
+  <script src="js/handle_highlight.js"></script>
+
   <script src="js/build_knowledge_base_highlights.js"></script>
 </html>
